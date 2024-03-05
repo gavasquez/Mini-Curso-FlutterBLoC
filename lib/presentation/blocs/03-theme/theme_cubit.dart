@@ -5,7 +5,7 @@ part 'theme_state.dart';
 
 class ThemeCubit extends Cubit<ThemeState> {
   ThemeCubit({
-    bool darkMode = false,
+    bool darkMode = true,
   }) : super(ThemeState(isDarkmode: darkMode));
 
   void toggleTheme() {

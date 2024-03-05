@@ -9,6 +9,18 @@ void serviceLocatorInit() {
   getIt.registerSingleton(RouterSimpleCubit());
   getIt.registerSingleton(CounterCubit());
   getIt.registerSingleton(ThemeCubit());
+
   getIt.registerSingleton(GuestsBloc());
-  getIt.registerSingleton(PokemonBloc());
+  getIt.registerSingleton(PokemonBloc(fecthPokemon: PokemonInformation.getPokemonName));
+
+  getIt.registerSingleton( HisotricLocationBloc() );
+
+
+  getIt.registerSingleton( 
+      GeolocationCubit(
+        // onNewUserLocationCallback: historicBloc.onNewUserLocation,
+        onNewUserLocationCallback: getIt<HisotricLocationBloc>().onNewUserLocation,
+      )
+        ..watchUserLocation()
+  );
 }
